@@ -45,6 +45,45 @@ namespace StudentCoursesApi.Controllers
             return Ok(studentProfile);
         }
 
+        // GET: api/StudentProfiles/{id}/courses
+        // This endpoint returns a student profile along with their course records, ordered by course ID
+        [HttpGet("{id}/courses")]
+        public async Task<IActionResult> GetStudentProfileWithCourses(int id)
+        {
+            var studentProfile = await _context.StudentProfiles
+                .Where(profile => profile.Id == id)
+                .Select(profile => new
+                {
+                    profile.Id,
+                    profile.FullName,
+                    profile.CollegeProgram,
+                    profile.YearInProgram,
+                    profile.FavoriteMajorCourse,
+                    profile.FavoriteElectiveCourse,
+                    CourseRecords = profile.CourseRecords
+                        .OrderBy(course => course.Id)
+                        .Select(course => new
+                        {
+                            course.Id,
+                            course.CourseCode,
+                            course.CourseName,
+                            course.Semester,
+                            course.CourseCategory,
+                            course.CreditHours,
+                            course.CompletionStatus
+                        })
+                })
+                .FirstOrDefaultAsync();
+
+            // If no student profile with the specified ID exists, return a 404 Not Found response
+            if (studentProfile == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(studentProfile);
+        }
+
         // POST: api/StudentProfiles
         [HttpPost]
         public async Task<ActionResult<StudentProfile>> CreateStudentProfile(StudentProfile studentProfile)

@@ -25,7 +25,7 @@ namespace StudentCoursesApi.Models
         [StringLength(100)]
         public string? FavoriteElectiveCourse { get; set; } = string.Empty;
 
-        // One to many relationship with CourseRecord, a student can have many course records
+        // Navigation property to related CourseRecords
         [JsonIgnore]
         public List<CourseRecord> CourseRecords { get; set; } = new(); 
     }
