@@ -27,7 +27,7 @@ namespace StudentCoursesApi.Models
         public string CourseCategory { get; set; } = string.Empty; // e.g., "Major", "Elective", "General Education"
 
         [Range(1, 6)]
-        public int Credits { get; set; }
+        public int CreditHours { get; set; }
 
         [Required]
         [StringLength(30)]
