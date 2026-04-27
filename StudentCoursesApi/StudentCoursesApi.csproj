@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EditorConfigFiles Remove="C:\Users\josht\OneDrive\Documents\ContemporaryProgramming\Final Project\StudentCoursesApi\StudentCoursesApi\.editorconfig" />
   </ItemGroup>
 

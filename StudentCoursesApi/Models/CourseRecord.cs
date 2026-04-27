@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace StudentCoursesApi.Models
 {
@@ -8,6 +9,7 @@ namespace StudentCoursesApi.Models
 
         public int StudentProfileId { get; set; } // Foreign key to StudentProfile
 
+        [JsonIgnore]
         public StudentProfile? StudentProfile { get; set; } // Navigation property to StudentProfile
 
         [Required]

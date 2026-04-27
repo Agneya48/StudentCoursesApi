@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace StudentCoursesApi.Models
 {
@@ -25,6 +26,7 @@ namespace StudentCoursesApi.Models
         public string? FavoriteElectiveCourse { get; set; } = string.Empty;
 
         // One to many relationship with CourseRecord, a student can have many course records
+        [JsonIgnore]
         public List<CourseRecord> CourseRecords { get; set; } = new(); 
     }
 }
