@@ -19,7 +19,9 @@ Which in turn interact with two EF Core entity models/tables:
 - `StudentProfiles`
 - `CourseRecords`
 
-`CourseRecords` uses `StudentProfileId` as a foreign key to relate to 'StudentProfiles' in a one-to-many relationship. A student may have multiple course records, but each course record is associated with only one student profile.
+`CourseRecords` uses `StudentProfileId` as a foreign key to relate in a one-to-many relationship. A student may have multiple course records, but each course record is associated with only one student profile.
+
+Be advised that deleting a student profile will also delete all associated course records due to the configured cascade delete behavior in the EF Core model.
 
 ---
 
